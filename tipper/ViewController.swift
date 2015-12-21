@@ -21,16 +21,16 @@ class ViewController: UIViewController {
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
         self.title = "Tipper"
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("view will appear")
         let defaults = NSUserDefaults.standardUserDefaults()
         let tipValue = defaults.integerForKey("default_tip_percentage")
         
         tipControl.selectedSegmentIndex = tipValue
+        
+        billField.becomeFirstResponder()
     }
 
 
@@ -40,7 +40,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onTap(sender: AnyObject) {
-        view.endEditing(true)
     }
     
     @IBAction func onEditingChanged(sender: AnyObject) {
@@ -60,9 +59,8 @@ class ViewController: UIViewController {
             total = 0.0
         }
         
-        
-        tipLabel.text = "$\(tip)0"
-        totalLabel.text = "$\(total)0"
+        tipLabel.text = String(format: "$%.2f", tip)
+        totalLabel.text = String(format: "$%.2f", total)
         
     }
     
