@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         tipControl.selectedSegmentIndex = tipValue
         
         billField.becomeFirstResponder()
+        
     }
 
 
